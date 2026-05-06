@@ -1,5 +1,6 @@
 // STEP 1: Initialize game variables
 // STEP 1a: Pick random number
+let randomNumber = Math.floor(Math.random() * 100) + 1;
 /* */
 // STEP 1b: Create variables to represent the three paragraphs above that will contain user feedback
 const guesses = document.querySelector('p#guesses');
@@ -13,7 +14,7 @@ const guessField = document.querySelector('input#guessField');
 let guessCount = 1;
 // STEP 1e: Create a variable to represent the game reset button
 let resetButton;
-let guessSubmit = document.querySelector('button');
+let guessSubmit = document.querySelector('button#guessSubmit');
 // STEP 2: Put focus on the field that allows user to type in guesses
 guessField.focus();
 
@@ -25,12 +26,14 @@ function checkGuess() {
     if (guessCount === 1) {
         guesses.textContent = 'Previous guesses: ';
     }
+    guessCount++;
     // STEP 3c: Add the user's current guess to that list, plus a space
     guesses.textContent += userGuess + ' ';
     // STEP 3d: Conditional - the user guessed correctly
     if (userGuess === randomNumber) {
         // Output a success message, then end the game
         /* */
+        lastResult.textContent = 'Congratulations! You got it right!';
         lastResult.style.backgroundColor = 'green';
         lowOrHi.textContent = '';
         setGameOver();
@@ -45,7 +48,7 @@ function checkGuess() {
         lastResult.textContent = 'Wrong!';
         lastResult.style.backgroundColor = 'red';
         // If the guess is too low, let the user know
-        if (userGuess /* */) {
+        if (userGuess < randomNumber) {
             lowOrHi.textContent = 'Too low.';
         // Else if the guess is too high, let the user know
         } else if (userGuess > randomNumber) {
@@ -63,10 +66,12 @@ function checkGuess() {
 function setGameOver() {
     // STEP 4a: Disable the guessing field and submit button
     /* */
+    guessField.disabled = true;
     guessSubmit.disabled = true;
     // STEP 4b: Build a new button to start a new game
     resetButton = document.createElement('button');
     resetButton.textContent = 'New game';
+    document.body.appendChild(resetButton);
     /* */
     // STEP 4c: Add a click event to the new button that calls resetGame function
     resetButton.addEventListener('click', resetGame);
@@ -90,6 +95,7 @@ function resetGame() {
     guessField.focus();
     // STEP 5e: Change background color of lastResult paragraph back to white
     lastResult.style.backgroundColor = 'white';
+    resetButton.parentNode.removeChild(resetButton);
     // STEP 5f: Generate a new random number
     randomNumber = Math.floor(Math.random() * 100) + 1;
 }
