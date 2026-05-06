@@ -4,6 +4,7 @@
 // STEP 1b: Create variables to represent the three paragraphs above that will contain user feedback
 const guesses = document.querySelector('p#guesses');
 const lastResult = document.querySelector('p#lastResult');
+const lowOrHi = document.querySelector('p#lowOrHi');
 /* */
 // STEP 1c: Create variables to represent the guessing form
 const guessField = document.querySelector('input#guessField');
@@ -12,7 +13,7 @@ const guessField = document.querySelector('input#guessField');
 let guessCount = 1;
 // STEP 1e: Create a variable to represent the game reset button
 let resetButton;
-
+let guessSubmit = document.querySelector('button');
 // STEP 2: Put focus on the field that allows user to type in guesses
 guessField.focus();
 
@@ -93,4 +94,5 @@ function resetGame() {
     randomNumber = Math.floor(Math.random() * 100) + 1;
 }
 // STEP 3i: Add an event listener for the guess form button that calls the checkGuess function
+guessSubmit.addEventListener('click', checkGuess);
 /* */
