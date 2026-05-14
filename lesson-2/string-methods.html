@@ -10,24 +10,29 @@
 	<h1>String Methods</h1>
 	<p>JavaScript output to go here.</p>
     <script>
-        var output = document.querySelector('p');
+        let output = document.querySelector('p');
         
         /* STEP 1: String Length */
-
+        let step1a = "words are all I have";
+        let step1b = step1a.length;
 
         /* STEP 2: Retrieving a Specific String Character */
-
+        let step2a = step1a[1];//0 being first char
 
         /* STEP 3: Extracting Part of a String */
-
+        let step3a = step1a.slice(0, 5);//0 start index, 5 number of characters to keep
+        // output.textContent = step3a;
         // Note - if the substring is not found within the string, indexOf() returns -1
-
+        let step3b = step1a.indexOf("are");
+        output.textContent = step3b;//index of first letter of matching string
         // Note - if you don't specify where to end the slice, the method returns the rest of the string
 
         /* STEP 4: Changing Case */
-
+        let step3c = step1a.toUpperCase();
 
         /* STEP 5: Updating Parts of a String */
+        let step5 = step1a.replace("words", "car");
+        //step5.charAt(1);//char at index 1
         
 
     </script>
