@@ -67,5 +67,5 @@ let removedItem = orig6Array.shift();//pop but for first item of array
 
 
 // We can also modify the array contents by deleting or substituting elements, or inserting one or more elements at a certain place with splice()
-orig6Array.splice(0,2, "HELLO")//first param = index to insert, second = how many elements to remove right to left, third = element to insert
+orig6Array.splice(1,1, "HELLO", "BEANS")//first param = index to insert, second = how many elements to remove right to left, third = element to insert
 /* That's it for the basics of working with arrays! With these tools at your disposal, a whole new world of possibilities with JavaScript are at your command */
