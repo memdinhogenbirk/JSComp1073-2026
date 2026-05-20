@@ -6,16 +6,18 @@ html {
 /* Styles for invoice table
 ------------------------------------------------------- */
 table {
-	border-collapse: collapse;
+	border-collapse: separate;
+	border-spacing: 0;
 }
-td, th {
-	border: 1px solid grey;
-	padding: 1em;
-}
+
 tfoot th {
 	text-align: right;
 }
 tfoot td {
 	font-weight: bold;
+}
+td, th, tr {
+	border: 1px solid grey;
+	padding: 1em;
 }
 /* Align individual prices to the right */
