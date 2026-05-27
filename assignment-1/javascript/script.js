@@ -33,13 +33,13 @@ function buttonClicked(columnNumber) {
     highlightWord(columnNumber);
     //iterate through array until length of column reached (last word/words in list).
     if (indices[columnNumber] < currentArray.length) {
-        outputArray[columnNumber] = currentArray[indices[columnNumber]].textContent;
+        outputArray[columnNumber] = currentArray[indices[columnNumber]].textContent.slice(2);
         indices[columnNumber]++;
     }
     //if index is at end of array, reset to 0 and start over.
     else {
         indices[columnNumber] = 0;
-        outputArray[columnNumber] = currentArray[indices[columnNumber]].textContent;
+        outputArray[columnNumber] = currentArray[indices[columnNumber]].textContent.slice(2);
         indices[columnNumber]++;
     }
 }
@@ -57,7 +57,7 @@ surprisesBtn.addEventListener('click', function() {
     //index through each column array, get random index, set output array item to text content of random word.
     for (let i = 0; i < colArray.length; i++) {
         const randomIndex = Math.floor(Math.random() * colArray[i].length);
-        outputArray[i] = colArray[i][randomIndex].textContent;
+        outputArray[i] = colArray[i][randomIndex].textContent.slice(2);
     }
     playbackStory();
 });
