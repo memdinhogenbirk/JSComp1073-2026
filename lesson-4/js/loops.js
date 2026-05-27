@@ -19,10 +19,10 @@ msg.textContent = courseList;
 let cities = ['Toronto', 'Montreal', 'Ottawa', 'Vancouver', 'Halifax'];
 const result = document.querySelector('#searchResult');
 const input = document.querySelector('input');
-const btn = document.querySelector('button#cities');
+const btn = document.querySelector('#cities');
 
 btn.addEventListener('click', function() {
-	var searchName = input.value;
+	let searchName = input.value;
 	input.value = '';
 	input.focus();
 	/* STEP 2a: Create a FOR loop to iterate through the cities array */
@@ -46,10 +46,11 @@ let num = 50;
 for (let i = 1; i <= num; i ++) {
 	let sqRoot = Math.sqrt(i);
 	/* STEP 3a: Build an IF statement that checks whether the square root of the number is NOT an integer */
-	//if () {
+	if (!Number.isInteger(sqRoot)) {
 		/* STEP 3b: If the square root of the number is not an integer, we don't want to output it to the paragraph, so skip the rest of the instructions inside this loop and go back up to the FOR, using 'continue' */
+		continue;
 
-	//}
+	}
 	numberList.textContent += i + ' ';
 }
 
@@ -58,7 +59,17 @@ for (let i = 1; i <= num; i ++) {
 let j = 0;
 let outputWhile = '';
 /* STEP 4a: WHILE loop to iterate through the cities array (created above in STEP 2) */
-
+while (j < cities.length) {
+	if (j === cities.length - 1) {
+		outputWhile += 'and ' + cities[j] + '.';
+		j++;
+		break;
+	}
+	else {
+		outputWhile += cities[j] + ', ';
+		j++;
+	}
+}
 console.log(outputWhile);
 
 let k = 0;
