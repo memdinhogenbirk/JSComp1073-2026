@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", (event) => {
 const surprisesBtn = document.querySelector('#surprises');//randomize
 const resetBtn = document.querySelector('#reset');//reset story
 const playbackBtn = document.querySelector('#playback');//outputstory
@@ -124,3 +125,4 @@ function readStoryAloud(word) {
     const textToSpeech = new SpeechSynthesisUtterance(word);
     window.speechSynthesis.speak(textToSpeech);
 }
+});
