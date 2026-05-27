@@ -1,7 +1,6 @@
 const surprisesBtn = document.querySelector('#surprises');//randomize
 const resetBtn = document.querySelector('#reset');//reset story
 const playbackBtn = document.querySelector('#playback');//outputstory
-const story = document.querySelector('#story');//story output
 const storyDivided = document.querySelectorAll('#storyDivided h4');//divided story output
 //buttons for story elements
 const col1Btn = document.querySelector('#Col1btn');
@@ -43,14 +42,11 @@ function buttonClicked(columnNumber) {
         outputArray[columnNumber] = currentArray[indices[columnNumber]].textContent;
         indices[columnNumber]++;
     }
-    //console.log(outputArray);
-    story.textContent = outputArray.join(' ') + '.';
 }
 //reset everything to default values.
 resetBtn.addEventListener('click', function() {
     outputArray = ["______", "______", "______", "______", "______"];
     indices = [0, 0, 0, 0, 0];
-    story.textContent = '______ ______ ______ ______ ______';
     colArray.forEach(column => {
         column.forEach(word => word.classList.remove('target'));
     });
@@ -63,7 +59,7 @@ surprisesBtn.addEventListener('click', function() {
         const randomIndex = Math.floor(Math.random() * colArray[i].length);
         outputArray[i] = colArray[i][randomIndex].textContent;
     }
-    story.textContent = outputArray.join(' ') + '.';
+    playbackStory();
 });
 //function to highlight the words in the column that is currently being used in the story.
 function highlightWord(columnNumber) {
@@ -81,18 +77,34 @@ function highlightWord(columnNumber) {
 }
 playbackBtn.addEventListener('click', playbackStory);
 async function playbackStory() {
-    //wanted the delayed effect that the original toy had when outputting your story. Tried multiple methods using setTimeout, didn't work. Found await within an async function, worked.
-    //thank you stack overflow https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep
+    /*wanted the delayed effect that the original toy had when outputting your story. 
+    Tried multiple methods using setTimeout, didn't work. Found await within an async function, worked.
+    thank you stack overflow https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep*/
+
     //making sure the story is completed before letting the playback function run
     if (outputArray.includes("______")) {
         alert("Please complete the story before playing it back!");
         return;
     }
+    storyDivided.forEach(part => part.textContent = '______');
     for (let i = 0; i < outputArray.length; i++) {
-        storyDivided[i].textContent = outputArray[i];
         
+        storyDivided[i].textContent = outputArray[i];
+        //little if statement here to prevent a reset from causing the readStoryAloud function to read blank words.
+        if (storyDivided[i].textContent === "______") {
+            return; // Don't read blank words
+        }
+        readStoryAloud(storyDivided[i].textContent);
         // Wait 2000ms (2 seconds) before showing the next part
         await new Promise(r => setTimeout(r, 2000));
     }
 }
-function readStoryAloud() {}
+//learning speechsynthesis web api so it can read the story aloud like the toy does.
+//https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance/SpeechSynthesisUtterance
+/*I'll never understand why the documentation on things is so long winded. Cut to the chase fellas, 
+I shouldn't have to disect a block just to get the basic functionallity working. 
+Yes there are other useful options, but all I wanted was "words go in", "robot speaks words".*/
+function readStoryAloud(word) {
+    const textToSpeech = new SpeechSynthesisUtterance(word);
+    window.speechSynthesis.speak(textToSpeech);
+}
