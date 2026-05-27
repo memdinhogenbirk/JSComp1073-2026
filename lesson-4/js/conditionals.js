@@ -120,5 +120,5 @@ This piece of syntax is a bit less typing, but it is harder to read */
 let breakMessage = document.querySelector('#breakTime');
 let coffeeBreak = true;
 
-
+coffeeBreak ? breakMessage.textContent = 'Time for a coffee break!' : breakMessage.textContent = 'No break for you!';
 // This page inspired by and adapted from https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/conditionals
