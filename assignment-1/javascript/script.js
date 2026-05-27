@@ -22,9 +22,9 @@ const colArray = [col1Array, col2Array, col3Array, col4Array, col5Array];
 let indices = [0, 0, 0, 0, 0];
 //output array, default blank values.
 let outputArray = ["______", "______", "______", "______", "______"];
-//forEach btn, add click listener, pass btn index in array as column number to buttonClicked function.
-/*there is one button per column, so the index of the button being clicked will tell the buttonClicked function
-which column to use*/
+/*forEach btn, add click listener, pass btn element and its index in the array as column number to buttonClicked function.
+Index parameter use courtesy of Ashwini Paraye https://ashwini-paraye.medium.com/the-complete-guide-to-javascripts-foreach-method-ebaa370950c8
+saves a lot of code*/
 colBtnArray.forEach((btn, index) => {
     btn.addEventListener('click', () => buttonClicked(index));
 });
@@ -119,7 +119,7 @@ async function playbackStory() {
 //https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance/SpeechSynthesisUtterance
 /*I'll never understand why the documentation on things is so long winded. Cut to the chase fellas, 
 I shouldn't have to disect a block just to get the basic functionallity working. 
-Yes there are other useful options, but all I wanted was "words go in", "robot speaks words".*/
+Yes there are other useful options, but all I wanted was "words go in", "robot voice comes out".*/
 function readStoryAloud(word) {
     const textToSpeech = new SpeechSynthesisUtterance(word);
     window.speechSynthesis.speak(textToSpeech);
