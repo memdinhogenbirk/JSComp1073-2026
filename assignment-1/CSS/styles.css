@@ -66,6 +66,7 @@ main a{
     border-radius: 100%;
     padding: 5px 10px;
     text-decoration: none;
+    user-select: none;
 }
 main a:hover{
     box-shadow: 0 0 10px 5px yellow;
