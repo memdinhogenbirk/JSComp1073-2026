@@ -1,9 +1,17 @@
-let courses = ['Intro to Web Programming', 'Client-Side JavaScript', 'Bitmap & Vector Graphics', 'Web UI Design with CSS', 'Relational Database'];
+let courses = ['Intro to Web Programming', 'Client-Side JavaScript', 'Server-Side Scripting with ASP.NET', 'Web UI Design with CSS', 'Relational Database'];
 let courseList = 'My courses this term are ';
 const msg = document.querySelector('#courses');
 /* STEP 1a: A simple FOR loop
 A simple loop of this structure needs an initializer (counter variable), an exit conditional, and and incrementor/decrementor */
-
+for (let i = 0; i < courses.length; i++) {
+	if (i === courses.length - 1) {
+		courseList += 'and ' + courses[i] + '.';
+		break;
+	}
+	else {
+		courseList += courses[i] + ', ';
+	}
+}
 msg.textContent = courseList;
 // STEP 1b: Add a conditional for the last item in the array so we can finish the sentence with a period.
 
@@ -18,9 +26,16 @@ btn.addEventListener('click', function() {
 	input.value = '';
 	input.focus();
 	/* STEP 2a: Create a FOR loop to iterate through the cities array */
-
+	for (let i = 0; i < cities.length; i++) {
+		if (searchName.toUpperCase() === cities[i].toUpperCase()) {
+			result.textContent = searchName + ' is in the list!';
+			break;
+		}
+		else {
+			result.textContent = searchName + ' is not in the list.';
+		}
 		/* STEP 2b: Build an IF/ELSE conditional that compares searchName with cities[i] */
-
+	}
 });
 
 
