@@ -1,9 +1,3 @@
-html {
-    visibility: hidden;
-}
-html.loaded {
-    visibility: visible;
-}
 body{
     background-color: yellow;
 }
