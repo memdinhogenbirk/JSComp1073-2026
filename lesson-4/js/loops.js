@@ -75,12 +75,37 @@ console.log(outputWhile);
 let k = 0;
 var outputDo = '';
 /* STEP 4b: DO/WHILE loop - grab the above IF/ELSE and the 'i++', then create the very same output with DO/WHILE (uncomment the above 'i = 0', first) */
-
+do {
+	if (k === cities.length - 1) {
+		outputDo += 'and ' + cities[k] + '.';
+		k++;
+		break;
+	}
+	else {
+		outputDo += cities[k] + ', ';
+		k++;
+	}
+} while (k < cities.length);
 console.log(outputDo);
 /* …now try to loop through the same array backwards! */
-
+citiesReverse = cities.reverse();
+let l = 0;
+var outputReverse = '';
+do {	if (l === citiesReverse.length - 1) {
+		outputReverse += 'and ' + citiesReverse[l] + '.';
+		l++;
+		break;
+	}
+	else {
+		outputReverse += citiesReverse[l] + ', ';
+		l++;
+	}
+} while (l < citiesReverse.length);
+console.log(outputReverse);
 /* STEP 5: The elegant FOREACH loop (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) */
-
+cities.forEach((city) => {
+	console.log(city);
+});
 
 
 // This page inspired by and adapted from https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Looping_code
