@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", (event) => {
+document.addEventListener('DOMContentLoaded', () => {
 const surprisesBtn = document.querySelector('#surprises');//randomize
 const resetBtn = document.querySelector('#reset');//reset story
 const playbackBtn = document.querySelector('#playback');//outputstory
