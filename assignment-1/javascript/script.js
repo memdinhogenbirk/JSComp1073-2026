@@ -125,4 +125,5 @@ function readStoryAloud(word) {
     const textToSpeech = new SpeechSynthesisUtterance(word);
     window.speechSynthesis.speak(textToSpeech);
 }
+document.documentElement.classList.add('loaded');
 });
