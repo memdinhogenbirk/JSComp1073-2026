@@ -1,5 +1,5 @@
 // Declare and initialize variables
-const elem = document.querySelector('p');
+const elem = document.querySelector('h1');
 
 // Functions
 function random(number) {
@@ -7,9 +7,10 @@ function random(number) {
 }
 /* STEP 1a: Event Objects
 Modify the below function to allow it to accept the event as a parameter or argument (named "event" in this case), then change the background color of the event.target instead of the document body */
-function bgChange() {
+function bgChange(event) {
     var rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
-    document.body.style.backgroundColor = rndCol;
+    event.target.style.backgroundColor = rndCol;
+    // document.body.style.backgroundColor = rndCol;
 }
 // The target property of the event is a reference to the element that the event was acted upon
 
@@ -27,7 +28,12 @@ const submit = document.getElementById('submit');
 const para = document.querySelector('#formErrors');
 
 /* STEP 2b: Create a script to capture the onsubmit event using preventDefault() */
-
+form.addEventListener('submit', (event)=>{
+    if(email.value === ""){
+        event.preventDefault();
+        para.textContent = "oiy";
+    }
+})
 // Next, open up gallery.html...
 
 // This page inspired by and adapted from https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events
