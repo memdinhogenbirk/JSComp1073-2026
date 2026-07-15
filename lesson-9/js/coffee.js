@@ -56,7 +56,16 @@ coffee2.serveIt();
 /* STEP 4: Call up the serveIt() method */
 
 /* STEP 5: Define a subclass of the Coffee class */
-
+class Latte extends Coffee{
+  milkType;
+  constructor(size, decaf, milkType){
+    super(size, decaf);
+    this.milkType;
+  }
+  latteDesc(){
+    return `A ${this.size} latte with ${this.milkType} milk`;
+  }
+}
 /* STEP 6: Create a new instance of the Latte object */
 
 /* STEP 7: Call up the latteDesc() method for the above created Latte instance */
