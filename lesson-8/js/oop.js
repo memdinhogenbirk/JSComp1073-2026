@@ -1,38 +1,60 @@
-const output = document.getElementById('output');
+const output = document.getElementById("output");
 
 /* STEP 1a: Create a new object using a regular function */
+function createNewCar(make, model, color){
+    let obj = {};
+    obj.model = model;
+    obj.make = make;
+    obj.color = color;
 
+    return obj;
+}
 
-/* STEP 1b: Use the console to create a new album object, and then invoke the function represented using .describe() */
+/* STEP 1b: Use the console to create a new vehicle object, and then invoke the function represented using .description() */
+let car1 = createNewCar("Honda", "Civic", "Red");
 
+/* STEP 2a: In order to be a bit more concise, JavaScript allows us to use constructor functions - 
+rewrite the above function, without returning anything. Capitalize the name of the function. */
+function Car(make, model, color){
+    this.make = make;
+    this.model = model;
+    this.color = color;
+    this.description = function(){
+        return `${this.make} ${this.model} ${this.color}`
+    }
+}
 
-/* STEP 2a: In order to be a bit more concise, JavaScript allows us to use constructor functions - rewrite the above function, without returning anything. Capitalize the name of the function. */
+let car2 = new Car("Toyota", "Corolla", "Purple");
+/* STEP 2b: Use the console to create a couple of different people, using the 'new' keyword, 
+and again invoking the .greeting() method for each person */
+output.textContent = car2.description();
+/* STEP 3a: Build the complete constructor for the object Person (comment out the above function first).
+ Include name (first and last), age, gender, interests, bio (function), and greeting (function). */
 
+/* STEP 3b: Instantiate a new Person based on the above constructor */
 
-/* STEP 2b: Use the console to create a couple of different albums, using the 'new' keyword, and again invoking the .describe() method for each one */
+/* STEP 3c: Attempt to access the various properties of person1 using the console. */
+// person2['age']
+// person2.interests[1]
+// person2.bio()
 
+/* STEP 4a: Alternatively, you can use the Object() constructor to create an object. eg. car*/
+let car3 = new Object();
 
-/* STEP 3a: Build the complete constructor for the object Album (comment out the above functions first). Include album name, artist, year, number of tracks, and description (function). */
+car3.make = "Subaru";
+car3.model = "Impreza";
+car3.color = "Blue";
 
+car3.desc = function(){
+    return `${this.make} ${this.model} ${this.color}`
+}
+/* STEP 4b: Once 'car' is created, add various properties and methods… */
 
+/* STEP 4c: Change some of the properties of 'car' in the console, then invoke the car.fun() function */
+let car4 = Object.create(car3);
+/* STEP 5a: Yet another approach is to use the create() method. 
+Let's see how the above car object can be used to create another object */
 
-/* STEP 3b: Instantiate a new Album (or 2) based on the above constructor */
+/* STEP 5b: Output to the paragraph anotherCar.brand - you will see that it has retained the properties of the original object. */
 
-
-/* STEP 3c: Attempt to access the various properties of album2 or album3 using the console. */
-// album2['name']
-// album2['artist']
-// album2.numTracks
-// album2.year
-/* STEP 3d: Invoke a method belonging to one of the album objects */
-// album2.describe()
-// album3.describe()
-
-/* STEP 4a: Modify the describe method of the above Album constructor so that it returns a string. */
-
-/* STEP 4b: Capture the description of one of the album objects and set it as the text for the paragraph on the page (see line 1 of this script). */
-
-
-// That's it! Now on to the Lab...
-
-// This page inspired by and adapted from https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics
+// This page inspired by and adapted from https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object-oriented_JS
