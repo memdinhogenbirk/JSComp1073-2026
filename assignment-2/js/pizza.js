@@ -11,6 +11,7 @@ const order = document.getElementById('order');
 const reset = document.getElementById('reset');
 const pizzas = document.getElementById('pizzas');
 
+// arrays to store pizza objects, html li elements (pizza outputs), and delete buttons for pizzas
 let pizzaObjects = [];
 let pizzaList = [];
 let deleteBtns = [];

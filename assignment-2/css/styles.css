@@ -4,11 +4,61 @@ body {
 	font-family: sans-serif;
 	font-size: 150%;
 	line-height: 1.4;
-	width: 640px;
-	margin-left: auto;
-	margin-right: auto;
-	/* transition: all 1s; */
+
+}
+header{
+	text-align: center;
+	margin-top: 0;
+}
+h1{
+	margin-top: 0;
 }
 #pizzas li {
   white-space: pre-wrap;
+}
+main{
+	display: flex;
+	flex-direction: row;
+	
+}
+form{
+	width: max-content;
+}
+.menu{
+	display: flex;
+	flex-direction: column;
+}
+.radios{
+	display: flex;
+	flex-direction: row;
+}
+.checkboxes{
+	display: flex;
+	flex-direction: row;
+}
+.checkboxes fieldset{
+	display: flex;
+	flex-direction: row;
+}
+.checkboxes .menu{
+	margin-right: 1em;
+}
+.buttons{
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+}
+button{
+	margin: 1rem;
+	padding: 1rem;
+}
+#orderSummary{
+	margin: auto;
+	margin-top: 0rem;
+	width: 30%;
+}
+#orderSummary h2{
+	margin-top: 0;
+	padding-top: 0;
+	text-align: center;
 }

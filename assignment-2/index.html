@@ -16,6 +16,7 @@
     </header>
     <main>
         <form>
+            <div class="radios">
             <fieldset>
                 <legend>Select a Size</legend>
                 <!--
@@ -24,13 +25,19 @@
                     - medium
                     - large
                 -->
-                <div>
+                <div class="menu">
+                    <span>
                     <input type="radio" id="smallSize" name="size" value="small" required checked>
                     <label for="smallSize">small</label>
+                    </span>
+                    <span>
                     <input type="radio" id="mediumSize" name="size" value="medium">
                     <label for="mediumSize">medium</label>
+                    </span>
+                    <span>
                     <input type="radio" id="largeSize" name="size" value="large">
                     <label for="largeSize">large</label>
+                    </span>
                 </div>
             </fieldset>
             <fieldset>
@@ -41,13 +48,19 @@
                     - stuffed
                 -->
                 <legend>Select Your Crust</legend>
-                <div>
+                <div class="menu">
+                    <span>
                     <input type="radio" id="regularCrust" name="crust" value="regular" required checked>
                     <label for="regularCrust">regular</label>
+                    </span>
+                    <span>
                     <input type="radio" id="thinCrust" name="crust" value="thin">
                     <label for="thinCrust">thin</label>
+                    </span>
+                    <span>
                     <input type="radio" id="stuffedCrust" name="crust" value="stuffed">
                     <label for="stuffedCrust">stuffed</label>
+                    </span>
                 </div>
             </fieldset>
             <fieldset>
@@ -59,15 +72,23 @@
                     - bbq
                     - no
                 -->
-                <div>
+                <div class="menu">
+                    <span>
                     <input type="radio" id="tomatoSauce" name="sauce" value="tomato" required checked>
                     <label for="tomatoSauce">tomato</label>
+                    </span>
+                    <span>
                     <input type="radio" id="alfredoSauce" name="sauce" value="alfredo">
                     <label for="alfredoSauce">alfredo</label>
+                    </span>
+                    <span>
                     <input type="radio" id="bbqSauce" name="sauce" value="bbq">
                     <label for="bbqSauce">bbq</label>
+                    </span>
+                    <span>
                     <input type="radio" id="noSauce" name="sauce" value="no">
                     <label for="noSauce">none</label>
+                    </span>
                 </div>
             </fieldset>
             <fieldset>
@@ -79,17 +100,27 @@
                     - no
                 -->
                 <legend>Select Your Cheese</legend>
-                <div>
+                <div class="menu">
+                    <span>
                     <input type="radio" id="mozzarellaCheese" name="cheese" value="mozzarella" required checked>
                     <label for="mozzarellaCheese">mozzarella</label>
+                    </span>
+                    <span>
                     <input type="radio" id="cheddarCheese" name="cheese" value="cheddar">
                     <label for="cheddarCheese">cheddar</label>
+                    </span>
+                    <span>
                     <input type="radio" id="parmesanCheese" name="cheese" value="parmesan">
                     <label for="parmesanCheese">parmesan</label>
+                    </span>
+                    <span>
                     <input type="radio" id="noCheese" name="cheese" value="no">
                     <label for="noCheese">none</label>
+                    </span>
                 </div>
             </fieldset>
+            </div>
+            <div class="checkboxes">
             <fieldset>
                 <legend>Select Your Toppings</legend>
                 <!--
@@ -99,40 +130,62 @@
                     - tomatoes
                     - onions
                 -->
-                <div>
-                    <h3>Vegetable Toppings</h3>
-                    <input type="checkbox" id="mushrooms" name="toppings" value="mushrooms">
-                    <label for="mushrooms">mushrooms</label>
-                    <input type="checkbox" id="peppers" name="toppings" value="peppers">
-                    <label for="peppers">peppers</label>
-                    <input type="checkbox" id="tomatoes" name="toppings" value="tomatoes">
-                    <label for="tomatoes">tomatoes</label>
-                    <input type="checkbox" id="onions" name="toppings" value="onions">
-                    <label for="onions">onions</label>
-                </div>
-                <!--
-                meat toppings
-                    - pepperoni
-                    - bacon
-                    - sausage
-                    - chicken
-                -->
-                <div>
-                    <h3>Meat Toppings</h3>
-                    <input type="checkbox" id="pepperoni" name="toppings" value="pepperoni">
-                    <label for="pepperoni">pepperoni</label>
-                    <input type="checkbox" id="bacon" name="toppings" value="bacon">
-                    <label for="bacon">bacon</label>
-                    <input type="checkbox" id="sausage" name="toppings" value="sausage">
-                    <label for="sausage">sausage</label>
-                    <input type="checkbox" id="chicken" name="toppings" value="chicken">
-                    <label for="chicken">chicken</label>
-                </div>
+                
+                    <div class="menu">
+                        <h3>Vegetable Toppings</h3>
+                        <span>
+                        <input type="checkbox" id="mushrooms" name="toppings" value="mushrooms">
+                        <label for="mushrooms">mushrooms</label>
+                        </span>
+                        <span>
+                        <input type="checkbox" id="peppers" name="toppings" value="peppers">
+                        <label for="peppers">peppers</label>
+                        </span>
+                        <span>
+                        <input type="checkbox" id="tomatoes" name="toppings" value="tomatoes">
+                        <label for="tomatoes">tomatoes</label>
+                        </span>
+                        <span>
+                        <input type="checkbox" id="onions" name="toppings" value="onions">
+                        <label for="onions">onions</label>
+                        </span>
+                    </div>
+                    <!--
+                    meat toppings
+                        - pepperoni
+                        - bacon
+                        - sausage
+                        - chicken
+                    -->
+                    <div class="menu">
+                        <h3>Meat Toppings</h3>
+                        <span>
+                        <input type="checkbox" id="pepperoni" name="toppings" value="pepperoni">
+                        <label for="pepperoni">pepperoni</label>
+                        </span>
+                        <span>
+                        <input type="checkbox" id="bacon" name="toppings" value="bacon">
+                        <label for="bacon">bacon</label>
+                        </span>
+                        <span>
+                        <input type="checkbox" id="sausage" name="toppings" value="sausage">
+                        <label for="sausage">sausage</label>
+                        </span>
+                        <span>
+                        <input type="checkbox" id="chicken" name="toppings" value="chicken">
+                        <label for="chicken">chicken</label>
+                        </span>
+                    </div>
+                
             </fieldset>
-            <button type="submit" id="order">Order</button>
-            <button type="reset" id="reset">Clear Selection</button>
+            <div class="buttons">
+                <button type="submit" id="order">Order</button>
+                <button type="reset" id="reset">Clear Selection</button>
+            </div>
+            </div>
         </form>
-        <div>
+        <div id="orderSummary">
+            <h2>Pizza Order Summary</h2>
             <ul id="pizzas">
             </ul>
         </div>
