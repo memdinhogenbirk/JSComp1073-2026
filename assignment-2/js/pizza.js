@@ -11,6 +11,10 @@ const order = document.getElementById('order');
 const reset = document.getElementById('reset');
 const pizzas = document.getElementById('pizzas');
 
+let pizzaObjects = [];
+let pizzaList = [];
+let deleteBtns = [];
+
 class Pizza {
     size;
     crust;
@@ -29,18 +33,49 @@ class Pizza {
     }
 }
 order.addEventListener('click', function(event){
-    event.preventDefault();
-    let newPizza = new Pizza(
+    event.preventDefault();// prevent the form from submitting and refreshing the page
+    let newPizza = new Pizza(// get selected values only and create a new Pizza object using the Pizza class constructor with checked values as parameters
         document.querySelector('input[name="size"]:checked').value,
         document.querySelector('input[name="crust"]:checked').value,
         document.querySelector('input[name="sauce"]:checked').value,
         document.querySelector('input[name="cheese"]:checked').value,
+        // checklist is turned into an array due to multiple values.
         Array.from(document.querySelectorAll('input[name="toppings"]:checked')).map(topping => topping.value)
     );
+    //preparing new elements to be added to the page
     let pizza = document.createElement("li");
     pizza.textContent = newPizza.displayPizza();
+    pizzaObjects.push(newPizza);
+    pizza.id = `pizza-${pizzaObjects.length}`;
+    pizzaList.push(pizza);
+    
+    let deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Remove Pizza";
+    deleteBtns.push(deleteBtn);
+    deleteBtn.id = `delete-${pizzaObjects.length}`;
+    pizza.appendChild(deleteBtn);
+
+    deleteBtn.addEventListener('click', function(event){
+        event.preventDefault();
+        let pizzaId = event.target.id.split("-")[1];//split the string in the id to get the id number only
+        let pizzaToDelete = document.getElementById(`pizza-${pizzaId}`);
+        pizzas.removeChild(pizzaToDelete);
+        pizzaObjects.splice(pizzaId - 1, 1);
+        deleteBtns.splice(pizzaId - 1, 1);
+        pizzaList.splice(pizzaId - 1, 1);
+        for (let i = 0; i < pizzaObjects.length; i++) {
+            pizzaList[i].id = `pizza-${i + 1}`;
+            deleteBtns[i].id = `delete-${i + 1}`;
+        };
+    });
+
     pizzas.appendChild(pizza);
+    
+    
+    
 });
+
+
 
 /*
 Write JavaScript to capture the values from each of the form inputs when the user clicks the 'order' button.
