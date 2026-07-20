@@ -16,6 +16,23 @@
     <main>
         <form>
             <fieldset>
+                <legend>Select a Size</legend>
+                <!--
+                Pizza Sizes
+                    - small
+                    - medium
+                    - large
+                -->
+                <div>
+                    <input type="radio" id="smallSize" name="size" value="small" required>
+                    <label for="smallSize">small</label>
+                    <input type="radio" id="mediumSize" name="size" value="medium">
+                    <label for="mediumSize">medium</label>
+                    <input type="radio" id="largeSize" name="size" value="large">
+                    <label for="largeSize">large</label>
+                </div>
+            </fieldset>
+            <fieldset>
                 <!--
                 Pizza Crusts
                     - thin
@@ -88,8 +105,8 @@
                     <label for="chicken">chicken</label>
                 </div>
             </fieldset>
-            <button type="submit">Create Pizza</button>
-            <button type="reset">Clear Selection</button>
+            <button type="submit" id="create">Create Pizza</button>
+            <button type="reset" id="reset">Clear Selection</button>
         </form>
     </main>
     <footer>
