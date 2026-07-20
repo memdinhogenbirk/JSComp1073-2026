@@ -21,22 +21,75 @@
                     - thin
                     - regular
                     - stuffed
-                vegetable toppings
-                    - mushrooms
-                    - peppers
-                    - tomatoes
-                    - onions
-                meat toppings
-                    - pepperoni
-                    - bacon
-                    - sausage
-                    - chicken
+                -->
+                <legend>Select Your Crust</legend>
+                <div>
+                    <input type="radio" id="regularCrust" name="crust" value="regular" required checked>
+                    <label for="regularCrust">regular</label>
+                    <input type="radio" id="thinCrust" name="crust" value="thin">
+                    <label for="thinCrust">thin</label>
+                    <input type="radio" id="stuffedCrust" name="crust" value="stuffed">
+                    <label for="stuffedCrust">stuffed</label>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Select Your Sauce</legend>
+                <!--
                 sauce type
                     - tomato
                     - alfredo
                     - bbq
                 -->
+                <div>
+                    <input type="radio" id="tomatoSauce" name="sauce" value="tomato" required checked>
+                    <label for="tomatoSauce">tomato</label>
+                    <input type="radio" id="alfredoSauce" name="sauce" value="alfredo">
+                    <label for="alfredoSauce">alfredo</label>
+                    <input type="radio" id="bbqSauce" name="sauce" value="bbq">
+                    <label for="bbqSauce">bbq</label>
+                </div>
             </fieldset>
+            <fieldset>
+                <legend>Select Your Toppings</legend>
+                <!--
+                vegetable toppings
+                    - mushrooms
+                    - peppers
+                    - tomatoes
+                    - onions
+                -->
+                <div>
+                    <h3>Vegetable Toppings</h3>
+                    <input type="checkbox" id="mushrooms" name="toppings" value="mushrooms">
+                    <label for="mushrooms">mushrooms</label>
+                    <input type="checkbox" id="peppers" name="toppings" value="peppers">
+                    <label for="peppers">peppers</label>
+                    <input type="checkbox" id="tomatoes" name="toppings" value="tomatoes">
+                    <label for="tomatoes">tomatoes</label>
+                    <input type="checkbox" id="onions" name="toppings" value="onions">
+                    <label for="onions">onions</label>
+                </div>
+                <!--
+                meat toppings
+                    - pepperoni
+                    - bacon
+                    - sausage
+                    - chicken
+                -->
+                <div>
+                    <h3>Meat Toppings</h3>
+                    <input type="checkbox" id="pepperoni" name="toppings" value="pepperoni">
+                    <label for="pepperoni">pepperoni</label>
+                    <input type="checkbox" id="bacon" name="toppings" value="bacon">
+                    <label for="bacon">bacon</label>
+                    <input type="checkbox" id="sausage" name="toppings" value="sausage">
+                    <label for="sausage">sausage</label>
+                    <input type="checkbox" id="chicken" name="toppings" value="chicken">
+                    <label for="chicken">chicken</label>
+                </div>
+            </fieldset>
+            <button type="submit">Create Pizza</button>
+            <button type="reset">Clear Selection</button>
         </form>
     </main>
     <footer>
