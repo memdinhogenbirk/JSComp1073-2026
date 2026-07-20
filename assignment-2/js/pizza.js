@@ -29,7 +29,7 @@ class Pizza {
         this.toppings = toppings;
     }
     displayPizza(){
-        return `A ${this.size} pizza, with ${this.crust} crust, ${this.sauce} sauce, ${this.cheese} cheese, and the following toppings:\n\t-${this.toppings.join("\n\t-")}`;
+        return `A ${this.size} pizza, with ${this.crust} crust, ${this.sauce} sauce, ${this.cheese} cheese, and the following toppings:\n\t-${this.toppings.length === 0 ? "None" : this.toppings.join("\n\t-")}`;
     }
 }
 order.addEventListener('click', function(event){
