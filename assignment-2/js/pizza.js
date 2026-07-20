@@ -15,6 +15,7 @@ let pizzaObjects = [];
 let pizzaList = [];
 let deleteBtns = [];
 
+// Pizza class
 class Pizza {
     size;
     crust;
@@ -32,6 +33,7 @@ class Pizza {
         return `A ${this.size} pizza, with ${this.crust} crust, ${this.sauce} sauce, ${this.cheese} cheese, and the following toppings:\n\t-${this.toppings.length === 0 ? "None" : this.toppings.join("\n\t-")}`;
     }
 }
+
 order.addEventListener('click', function(event){
     event.preventDefault();// prevent the form from submitting and refreshing the page
     if(pizzaObjects.length >= 5){
@@ -50,32 +52,42 @@ order.addEventListener('click', function(event){
     let pizza = document.createElement("li");
     pizza.textContent = newPizza.displayPizza();
 
+    let deleteBtn = document.createElement("button");// create a delete button for the new pizza so it can be removed
+    deleteBtn.textContent = "Remove Pizza";
+
+    let br = document.createElement("br");// create a line break to separate the pizza description from the delete button
+
     pizzaObjects.push(newPizza);// add the new pizza object to the pizzaObjects array for future reference and manipulation
     pizza.id = `pizza-${pizzaObjects.length}`;// set id of new el based on length of pizzaObject array
     pizzaList.push(pizza);// add pizza to pizzaList array for id adjustment upon deletion of a pizza
     
-    let deleteBtn = document.createElement("button");// create a delete button for the new pizza so it can be removed
-    deleteBtn.textContent = "Remove Pizza";
     deleteBtns.push(deleteBtn);// add delete button to deleteBtns array for id adjustment upon deletion of a pizza
-    deleteBtn.id = `delete-${pizzaObjects.length}`;//give delete button id based on index (the end of/ length of the pizzaObjects array)
+    deleteBtn.id = `delete-${pizzaObjects.length}`;// give delete button id based on index (the end of/ length of the pizzaObjects array)
+    pizza.appendChild(br);// append the line break to the pizza li element
     pizza.appendChild(deleteBtn);// append the delete button to the pizza li element
+    
+    pizzas.appendChild(pizza);// append the new pizza li element to the ul list of pizzas
 
-    //delete function added to the new pizza's delete button
+    // delete function added to the new pizza's delete button
     deleteBtn.addEventListener('click', function(event){
         event.preventDefault();
-        let pizzaId = event.target.id.split("-")[1];//split the string in the id to get the id number only
-        let pizzaToDelete = document.getElementById(`pizza-${pizzaId}`);
-        pizzas.removeChild(pizzaToDelete);
-        pizzaObjects.splice(pizzaId - 1, 1);
+        let pizzaId = event.target.id.split("-")[1];// split the string in the id to get the id number only
+        let pizzaToDelete = document.getElementById(`pizza-${pizzaId}`);// get html element to remove by id matching corresponding delete button
+        pizzas.removeChild(pizzaToDelete);// remove the whole li element from the ul list of pizzas
+
+        // remove the corresponding pizza object, delete button, and pizza li element from their respective arrays
+        pizzaObjects.splice(pizzaId - 1, 1);// ids start at 1, index starts at 0, -1 to accommodate
         deleteBtns.splice(pizzaId - 1, 1);
         pizzaList.splice(pizzaId - 1, 1);
+
+        // for to reassign the ids of the remaining pizza li elements and delete buttons to match their new index in the arrays
         for (let i = 0; i < pizzaObjects.length; i++) {
             pizzaList[i].id = `pizza-${i + 1}`;
             deleteBtns[i].id = `delete-${i + 1}`;
         };
     });
 
-    pizzas.appendChild(pizza);
+    
     
     
     
