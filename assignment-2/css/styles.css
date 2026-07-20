@@ -9,3 +9,6 @@ body {
 	margin-right: auto;
 	/* transition: all 1s; */
 }
+#pizzas li {
+  white-space: pre-wrap;
+}
