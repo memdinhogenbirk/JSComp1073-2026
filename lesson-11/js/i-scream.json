@@ -1,0 +1,44 @@
+{
+    "companyName": "I-Scream Co",
+    "headOffice": "Barrie, Ontario",
+    "established": 2010,
+    "active": true,
+    "topFlavors": [
+        {
+            "name": "Chocolate Mint",
+            "calories": 250,
+            "type": "Ice Cream",
+            "ingredients": [
+                "Milk",
+                "Sugar",
+                "Cocoa",
+                "Mint Extract"
+            ],
+            "image": "https://memdinhogenbirk.github.io/JSComp1073-2026/lesson-11/images/chocolate-mint.svg"
+        },
+        {
+            "name": "Peach Mango",
+            "calories": 200,
+            "type": "Sorbet",
+            "ingredients": [
+                "Peach Puree",
+                "Mango Puree",
+                "Sugar",
+                "Water"
+            ],
+            "image": "https://memdinhogenbirk.github.io/JSComp1073-2026/lesson-11/images/peach-mango.svg"
+        },
+        {
+            "name": "Strawberry Sprinkle",
+            "calories": 300,
+            "type": "Gelato",
+            "ingredients": [
+                "Milk",
+                "Sugar",
+                "Strawberries",
+                "Sprinkles"
+            ],
+            "image": "https://memdinhogenbirk.github.io/JSComp1073-2026/lesson-11/images/strawberry-sprinkle.svg"
+        }
+    ]
+}
