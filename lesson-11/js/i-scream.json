@@ -27,6 +27,18 @@
                 "Water"
             ],
             "image": "https://memdinhogenbirk.github.io/JSComp1073-2026/lesson-11/images/peach-mango.svg"
+        },
+        {
+            "name": "Strawberry Sprinkle",
+            "calories": 220,
+            "type": "Ice Cream",
+            "ingredients": [
+                "Milk",
+                "Sugar",
+                "Strawberries",
+                "Sprinkles"
+            ],
+            "image": "https://memdinhogenbirk.github.io/JSComp1073-2026/lesson-11/images/strawberry-sprinkle.svg"
         }
     ]
 }
