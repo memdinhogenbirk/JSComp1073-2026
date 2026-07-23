@@ -70,11 +70,11 @@ function showTopFlavors(jsonObj) {
 // STEP 10i: Append each complete ARTICLE element to the SECTION element
         article.appendChild(h2);
         article.appendChild(h3);
+        article.appendChild(small);
         article.appendChild(img);
         article.appendChild(p1);
         article.appendChild(p2);
         article.appendChild(ul);
-        article.appendChild(small);
         section.appendChild(article);
     }
 }
