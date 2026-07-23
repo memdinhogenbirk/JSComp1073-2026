@@ -39,6 +39,30 @@
                 "Sprinkles"
             ],
             "image": "https://memdinhogenbirk.github.io/JSComp1073-2026/lesson-11/images/strawberry-sprinkle.svg"
+        },
+        {
+            "name": "Rocky Road",
+            "calories": 320,
+            "type": "Ice Cream",
+            "ingredients": [
+                "Milk",
+                "Sugar",
+                "Chocolate Chips",
+                "Cookie Chunks"
+            ],
+            "image": "https://memdinhogenbirk.github.io/JSComp1073-2026/lesson-11/images/ice-cream-xtra1.svg"
+        },
+        {
+            "name": "Moose Tracks",
+            "calories": 350,
+            "type": "Ice Cream",
+            "ingredients": [
+                "Milk",
+                "Sugar",
+                "Rollos",
+                "Peanut Butter Cups"
+            ],
+            "image": "https://memdinhogenbirk.github.io/JSComp1073-2026/lesson-11/images/ice-cream-xtra2.svg"
         }
     ]
 }
