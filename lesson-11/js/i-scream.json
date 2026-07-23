@@ -14,6 +14,7 @@
                 "Cocoa",
                 "Mint Extract"
             ],
+            "rating": 4.5,
             "image": "https://memdinhogenbirk.github.io/JSComp1073-2026/lesson-11/images/chocolate-mint.svg"
         },
         {
@@ -26,6 +27,7 @@
                 "Sugar",
                 "Water"
             ],
+            "rating": 4.6,
             "image": "https://memdinhogenbirk.github.io/JSComp1073-2026/lesson-11/images/peach-mango.svg"
         },
         {
@@ -38,6 +40,7 @@
                 "Strawberries",
                 "Sprinkles"
             ],
+            "rating": 4.7,
             "image": "https://memdinhogenbirk.github.io/JSComp1073-2026/lesson-11/images/strawberry-sprinkle.svg"
         },
         {
@@ -50,6 +53,7 @@
                 "Chocolate Chips",
                 "Cookie Chunks"
             ],
+            "rating": 4.5,
             "image": "https://memdinhogenbirk.github.io/JSComp1073-2026/lesson-11/images/ice-cream-xtra1.svg"
         },
         {
@@ -62,6 +66,7 @@
                 "Rollos",
                 "Peanut Butter Cups"
             ],
+            "rating": 4.8,
             "image": "https://memdinhogenbirk.github.io/JSComp1073-2026/lesson-11/images/ice-cream-xtra2.svg"
         }
     ]

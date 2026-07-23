@@ -49,6 +49,7 @@ function showTopFlavors(jsonObj) {
         let img = document.createElement("img");
         let p1 = document.createElement("p");
         let p2 = document.createElement("p");
+        let small = document.createElement("small");
         let ul = document.createElement("ul");
 // STEP 10f: Set the textContent property for each of the above elements (except the UL), based on the JSON content
         h2.textContent = topFlavors[i].name;
@@ -57,6 +58,7 @@ function showTopFlavors(jsonObj) {
         img.alt = topFlavors[i].name;
         p1.textContent = `Calories: ${topFlavors[i].calories}`;
         p2.textContent = `Ingredients: ${topFlavors[i].ingredients.join(", ")}`;
+        small.textContent = `Rating: ${topFlavors[i].rating}`;
 
 // STEP 10g: Build a loop for the ingredients array in the JSON
         for (let j = 0; j < topFlavors[i].ingredients.length; j++) {
@@ -72,6 +74,7 @@ function showTopFlavors(jsonObj) {
         article.appendChild(p1);
         article.appendChild(p2);
         article.appendChild(ul);
+        article.appendChild(small);
         section.appendChild(article);
     }
 }
