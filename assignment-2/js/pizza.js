@@ -30,6 +30,7 @@ class Pizza {
         this.cheese = cheese;
         this.toppings = toppings;
     }
+    //pizza description output method
     displayPizza(){
         return `A ${this.size} pizza, with ${this.crust} crust, ${this.sauce} sauce, ${this.cheese} cheese, and the following toppings:\n\t-${this.toppings.length === 0 ? "None" : this.toppings.join("\n\t-")}`;
     }
