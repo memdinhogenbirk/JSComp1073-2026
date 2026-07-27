@@ -11,6 +11,12 @@ const order = document.getElementById('order');
 const reset = document.getElementById('reset');
 const pizzas = document.getElementById('pizzas');
 const indexingBtns = Array.from(document.getElementById('indexingBtns').children);
+// add click event listeners to all indexing buttons
+indexingBtns.forEach(element => {
+    element.addEventListener('click', function(){
+        currentPizza(element.id.split("-")[1]);
+    })
+});
 
 // arrays to store pizza objects, html li elements (pizza outputs), and delete buttons for pizzas
 let pizzaObjects = [];
@@ -63,6 +69,11 @@ order.addEventListener('click', function(event){
     pizzaObjects.push(newPizza);// add the new pizza object to the pizzaObjects array for future reference and manipulation
     pizza.id = `pizza-${pizzaObjects.length}`;// set id of new el based on length of pizzaObject array
     pizzaList.push(pizza);// add pizza to pizzaList array for id adjustment upon deletion of a pizza
+    pizzaList.forEach(p => {
+        p.setAttribute("class", "hidden");
+    });
+    pizzaList.at(-1).setAttribute("class", "viewing");
+    
     
     deleteBtns.push(deleteBtn);// add delete button to deleteBtns array for id adjustment upon deletion of a pizza
     deleteBtn.id = `delete-${pizzaObjects.length}`;// give delete button id based on index (the end of/ length of the pizzaObjects array)
@@ -93,11 +104,12 @@ order.addEventListener('click', function(event){
     });
 
     // functions for activating indexing buttons based on number of objects
+    
     function viewIndexes(index){
         for (let i = 0; i < index; i++) {
             indexingBtns[i].classList.remove("inactive");
             indexingBtns[i].classList.add("active");
-            indexingBtns[i].setAttribute("disabled", "false");
+            indexingBtns[i].removeAttribute("disabled");
         }
     };
     function hideIndexes(index){
@@ -107,10 +119,18 @@ order.addEventListener('click', function(event){
             indexingBtns[i].setAttribute("disabled", "true");
         }
     };
-
-    // function for pizza being viewed
 });
-
+// function for pizza being viewed
+function currentPizza(id){
+    pizzaList.forEach(pizza => {
+        if(pizza.id.split("-")[1] === id){
+            pizza.classList.add("viewing");
+        }
+        else{
+            pizza.classList.remove("viewing");
+        }
+    });
+}
 
 
 /*
