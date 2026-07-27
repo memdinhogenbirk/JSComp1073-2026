@@ -69,7 +69,25 @@ button{
 #indexingBtns{
 	display: flex;
 	flex-direction: row;
-	left: 40%;
+	left: 37%;
 	position: absolute;
 	bottom: 0;
+}
+#indexingBtns button{
+	margin: 0.5rem;
+	padding: 0.5rem;
+	border-radius: 50%;
+}
+.inactive {
+	background-color: white;
+	border: black 1px solid;
+}
+.active{
+	background-color: lightgray;
+}
+.active:hover{
+	background-color: gray;
+}
+.viewing{
+	visibility: visible;
 }

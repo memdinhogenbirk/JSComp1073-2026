@@ -10,6 +10,7 @@ const formToppings = document.querySelectorAll('input[name="toppings"]');
 const order = document.getElementById('order');
 const reset = document.getElementById('reset');
 const pizzas = document.getElementById('pizzas');
+const indexingBtns = Array.from(document.getElementById('indexingBtns').children);
 
 // arrays to store pizza objects, html li elements (pizza outputs), and delete buttons for pizzas
 let pizzaObjects = [];
@@ -69,6 +70,7 @@ order.addEventListener('click', function(event){
     pizza.appendChild(deleteBtn);// append the delete button to the pizza li element
     
     pizzas.appendChild(pizza);// append the new pizza li element to the ul list of pizzas
+    viewIndexes(pizzaObjects.length);
 
     // delete function added to the new pizza's delete button
     deleteBtn.addEventListener('click', function(event){
@@ -81,6 +83,7 @@ order.addEventListener('click', function(event){
         pizzaObjects.splice(pizzaId - 1, 1);// ids start at 1, index starts at 0, -1 to accommodate
         deleteBtns.splice(pizzaId - 1, 1);
         pizzaList.splice(pizzaId - 1, 1);
+        hideIndexes(pizzaObjects.length);// hide any indexing buttons that are no longer needed
 
         // for to reassign the ids of the remaining pizza li elements and delete buttons to match their new index in the arrays
         for (let i = 0; i < pizzaObjects.length; i++) {
@@ -89,10 +92,23 @@ order.addEventListener('click', function(event){
         };
     });
 
-    
-    
-    
-    
+    // functions for activating indexing buttons based on number of objects
+    function viewIndexes(index){
+        for (let i = 0; i < index; i++) {
+            indexingBtns[i].classList.remove("inactive");
+            indexingBtns[i].classList.add("active");
+            indexingBtns[i].setAttribute("disabled", "false");
+        }
+    };
+    function hideIndexes(index){
+        for (let i = index; i < indexingBtns.length; i++) {
+            indexingBtns[i].classList.add("inactive");
+            indexingBtns[i].classList.remove("active");
+            indexingBtns[i].setAttribute("disabled", "true");
+        }
+    };
+
+    // function for pizza being viewed
 });
 
 
