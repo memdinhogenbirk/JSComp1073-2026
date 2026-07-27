@@ -91,6 +91,12 @@ button{
 .viewing{
 	visibility: visible;
 }
+.hidden{
+	visibility: hidden;
+}
+#pizzas li{
+	position: absolute;
+}
 .currentBtn{
 	background-color: gray;
 }
