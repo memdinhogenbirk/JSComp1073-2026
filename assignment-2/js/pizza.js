@@ -15,6 +15,7 @@ const indexingBtns = Array.from(document.getElementById('indexingBtns').children
 indexingBtns.forEach(element => {
     element.addEventListener('click', function(){
         currentPizza(element.id.split("-")[1]);
+        activeBtn(element);
     })
 });
 
@@ -73,6 +74,7 @@ order.addEventListener('click', function(event){
         p.setAttribute("class", "hidden");
     });
     pizzaList.at(-1).setAttribute("class", "viewing");
+    activeBtn(indexingBtns[(pizzaList.length -1)]);
     
     
     deleteBtns.push(deleteBtn);// add delete button to deleteBtns array for id adjustment upon deletion of a pizza
@@ -84,7 +86,7 @@ order.addEventListener('click', function(event){
     viewIndexes(pizzaObjects.length);
 
     // delete function added to the new pizza's delete button
-    deleteBtn.addEventListener('click', function(event){
+    deleteBtn.addEventListener('click', function(event) {
         event.preventDefault();
         let pizzaId = event.target.id.split("-")[1];// split the string in the id to get the id number only
         let pizzaToDelete = document.getElementById(`pizza-${pizzaId}`);// get html element to remove by id matching corresponding delete button
@@ -95,6 +97,11 @@ order.addEventListener('click', function(event){
         deleteBtns.splice(pizzaId - 1, 1);
         pizzaList.splice(pizzaId - 1, 1);
         hideIndexes(pizzaObjects.length);// hide any indexing buttons that are no longer needed
+        if(pizzaList.length > 0) {
+            activeBtn(indexingBtns[(pizzaList.length -1)]);
+            currentPizza(indexingBtns[(pizzaList.length -1)]);
+            pizzaList.at(-1).setAttribute("class", "viewing"); // default to showing last pizza added when removing pizzas
+        }
 
         // for to reassign the ids of the remaining pizza li elements and delete buttons to match their new index in the arrays
         for (let i = 0; i < pizzaObjects.length; i++) {
@@ -116,6 +123,9 @@ order.addEventListener('click', function(event){
         for (let i = index; i < indexingBtns.length; i++) {
             indexingBtns[i].classList.add("inactive");
             indexingBtns[i].classList.remove("active");
+            if(indexingBtns[i].classList.contains("currentBtn")){
+                indexingBtns[i].classList.remove("currentBtn");
+            }
             indexingBtns[i].setAttribute("disabled", "true");
         }
     };
@@ -125,13 +135,20 @@ function currentPizza(id){
     pizzaList.forEach(pizza => {
         if(pizza.id.split("-")[1] === id){
             pizza.classList.add("viewing");
+            pizza.classList.remove("hidden");
         }
         else{
             pizza.classList.remove("viewing");
+            pizza.classList.add("hidden");
         }
     });
 }
-
+function activeBtn(current){
+    indexingBtns.forEach(btn =>{
+        btn.classList.remove("currentBtn");
+    })
+    current.classList.add("currentBtn");
+}
 
 /*
 Write JavaScript to capture the values from each of the form inputs when the user clicks the 'order' button.

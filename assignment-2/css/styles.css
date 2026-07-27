@@ -91,3 +91,6 @@ button{
 .viewing{
 	visibility: visible;
 }
+.currentBtn{
+	background-color: gray;
+}
