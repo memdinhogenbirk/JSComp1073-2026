@@ -24,6 +24,7 @@
                     - small
                     - medium
                     - large
+                    required, defaults to small
                 -->
                 <div class="menu">
                     <span>
@@ -46,6 +47,7 @@
                     - thin
                     - regular
                     - stuffed
+                    defaults to regular
                 -->
                 <legend>Select Your Crust</legend>
                 <div class="menu">
@@ -71,6 +73,8 @@
                     - alfredo
                     - bbq
                     - no
+                    requires a selection, but can have no sauce if desired
+                    defaults to tomatosauce
                 -->
                 <div class="menu">
                     <span>
@@ -98,6 +102,9 @@
                     - cheddar
                     - parmesan
                     - no
+                    requires a selection, but can have no cheese if desired
+                    user can order just bread if they really want to. Itsa free country.
+                    defaults to mozzarella
                 -->
                 <legend>Select Your Cheese</legend>
                 <div class="menu">
@@ -129,6 +136,7 @@
                     - peppers
                     - tomatoes
                     - onions
+                    Not required, can have no toppings
                 -->
                 
                     <div class="menu">
@@ -156,6 +164,7 @@
                         - bacon
                         - sausage
                         - chicken
+                        Not required, can have no toppings
                     -->
                     <div class="menu">
                         <h3>Meat Toppings</h3>
@@ -186,8 +195,10 @@
         </form>
         <div id="orderSummary">
             <h2>Pizza Order Summary</h2>
+            <!--this is where the object data will be turned into html data-->
             <ul id="pizzas">
             </ul>
+            <!--up to 5 pizzas can be created at a time, and the user can view each individually-->
             <div id="indexingBtns">
                 <button id="index-1" class="inactive" disabled></button>
                 <button id="index-2" class="inactive" disabled></button>

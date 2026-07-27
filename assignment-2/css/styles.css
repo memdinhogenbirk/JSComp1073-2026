@@ -1,4 +1,5 @@
 /* Page Styles */
+/*JS related CSS near bottom of file*/
 @charset "utf-8";
 body {
 	font-family: sans-serif;
@@ -52,6 +53,14 @@ form{
 button{
 	margin: 1rem;
 	padding: 1rem;
+	border: none;
+	border-radius: 5px;
+}
+#order{
+	background-color: rgb(93, 155, 241);
+}
+#order:hover{
+	background-color: rgb(76, 125, 194);
 }
 #orderSummary{
 	margin: auto;
@@ -78,6 +87,8 @@ button{
 	padding: 0.5rem;
 	border-radius: 50%;
 }
+/*js related css ==============================*/
+/*inactive and active classes used to visually disable/enable index selectors*/
 .inactive {
 	background-color: white;
 	border: black 1px solid;
@@ -88,15 +99,24 @@ button{
 .active:hover{
 	background-color: gray;
 }
+/*viewing and hidden used to hide and reveal the pizza the user wishes to view*/
 .viewing{
 	visibility: visible;
 }
 .hidden{
 	visibility: hidden;
 }
+.currentBtn{
+	background-color: gray;
+}
+/*end js related css*/
 #pizzas li{
 	position: absolute;
 }
-.currentBtn{
-	background-color: gray;
+button[id^="delete-"]{
+	background-color: crimson;
+	
+}
+button[id^="delete-"]:hover{
+	background-color: brown;
 }
