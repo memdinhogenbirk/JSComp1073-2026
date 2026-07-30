@@ -12,7 +12,23 @@ const chargeMeter = document.querySelector(
 /* Functions
 -------------------------------------------------- */
 // STEP 3a: Create the updateBatteryStatus() function
+function updateBatteryStatus(battery){
+    chargeMeter.value = battery.level * 100;
+    chargeLevel.textContent = battery.level * 100 + "%";
+    chargeStatus.textContent = battery.charging ? "charging" : "unplugged";
+   
+}
+navigator.getBattery().then((battery) => {
+    updateBatteryStatus(battery);
+    battery.addEventListener("levelchange", () => {
+      updateBatteryStatus(battery);
+    });
 
+    // Listen for charging state changes
+    battery.addEventListener("chargingchange", () => {
+      updateBatteryStatus(battery);
+    });
+});
 // STEP 3b: Update the charging status
 
 // STEP 3c: Update the charge level

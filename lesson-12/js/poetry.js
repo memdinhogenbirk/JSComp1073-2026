@@ -1,11 +1,34 @@
 // STEP 1: Grab the HTML elements we need for the interaction
 const verseChoose = document.querySelector("#verse-choose");
 const pre = document.querySelector("pre");
+const url = "https://memdinhogenbirk.github.io/JSComp1073-2026/lesson-12/";
 
+
+document.addEventListener('DOMContentLoaded', () => {
+    updateDisplay("verse1");
+});
 // STEP 2: Build out the event handler for the SELECT element
-
+verseChoose.addEventListener('change', event =>{
+    const selectedValue = event.target.value;
+    updateDisplay(selectedValue);
+})
 // STEP 3: Construct updateDisplay() function
-
+function updateDisplay(verse){
+    fetch(url + verse +".txt")
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.text(); // Converts the response to plain text
+    })
+    .then(text => {
+        pre.textContent = text; // This is your text content
+    })
+    .catch(error => {
+        console.error('Error fetching the file:', error);
+    });
+    
+}
 // STEP 4: Declare and initialize URL to point to text file(s)
 
 // STEP 5: Build fetch() with promises

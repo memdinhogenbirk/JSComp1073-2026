@@ -1,8 +1,9 @@
 // The URL for the Article Search API at nytimes.com
 const baseURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
 // STEP 1: Get your own API key and paste it below…
-const key = "";
-let url;
+const key = "Qwi37oq0x5oERBHhlpKUpI3CzTM5m9hlgiJvjGwzZGh2MQxB";
+const secret = "My0MlXxiaZY3UaxoP3mV8Dbm1HEKYkGYQyMgRKOvKkjVSKTQz6NdZ8jc3uEjAZrX";
+
 // Grab references to all the DOM elements you'll need to access
 const searchTerm = document.querySelector(".search");
 const startDate = document.querySelector(".start-date");
@@ -10,13 +11,32 @@ const endDate = document.querySelector(".end-date");
 const searchForm = document.querySelector("form");
 const submitBtn = document.querySelector(".submit");
 const section = document.querySelector("section");
-// STEP 2: Add a submit event listener for the search form, referencing the fetchResults function as the callback
 
+// STEP 2: Add a submit event listener for the search form, referencing the fetchResults function as the callback
+searchForm.addEventListener("submit", event=>{
+    fetchResults(event);
+})
 // Functions
 function fetchResults(event) {
     // Use preventDefault() to stop the form submitting
+    event.preventDefault();
     // STEP 3: Assemble the full URL, according to the API documentation at the New York Times
+    let url =`${baseURL}?q=${searchTerm.value}&api-key=${key}`;
+    console.log(url);
     // STEP 4: Use fetch() to pass the URL that we built as a request to the API service, then pass the JSON to the displayResults() function
+    fetch(url)
+    .then(response =>{
+        if(!response.ok){
+            throw new Error('There has been an error')
+        }
+        return response.json();
+    })
+    .then(json =>{
+        displayResults(json);
+    })
+    .catch(error => {
+        console.error(error);
+    });
 }
 
 function displayResults(json) {
@@ -27,8 +47,9 @@ function displayResults(json) {
         section.removeChild(section.firstChild);
     }
     // STEP 6: Create the variable articles to capture the articles from the JSON object
-
-    if (articles.length === 0) {
+    let articles = json.response.docs;
+    console.log(articles);
+    if (articles === null) {
         const para = document.createElement("p");
         para.textContent = "No results returned.";
         section.appendChild(para);
