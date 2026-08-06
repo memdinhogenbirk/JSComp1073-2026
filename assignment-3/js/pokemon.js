@@ -3,7 +3,6 @@ const dynamicInfo = document.getElementById("dynamicInfo");
 dynamicInfo.textContent = "Name: Michael Emdin-Hogenbirk | Student ID: 200340292";
 const baseUrl = "https://pokeapi.co/api/v2/pokemon?limit=12&offset=0";
 const searchInput = document.getElementById("search");
-const searchBtn = document.getElementById("searchBtn");
 const pokemonList = document.getElementById("pokemonList");
 const names = [];
 const dropdown = document.getElementById("dropdown");
@@ -12,11 +11,18 @@ let currentPage = 1;
 let totalPages = 1;
 
 
-searchBtn.addEventListener("click", (event) => {
+searchInput.addEventListener("input", (event) => {
     event.preventDefault();
     searchPokemonNames();
-    //searchPokemonByName(pokemonNames, searchInput.value.toLowerCase());
+    dropdown.removeAttribute("hidden");
 });
+document.addEventListener("click", (event) => {
+  // Hide the dropdown if the click is outside both the dropdown and the search button
+    if (!dropdown.contains(event.target) && event.target !== searchInput) {
+        dropdown.setAttribute("hidden", "");
+    }
+})
+
 
 fetchResults(baseUrl);
 
@@ -168,18 +174,20 @@ function searchPokemonNames() {
     fetch("https://pokeapi.co/api/v2/pokemon?limit=2000&offset=0")
     .then(response => response.json())
     .then(data => {
+        if(!searchInput.value.trim()) {
+            dropdown.setAttribute("hidden", "true");
+            return;
+        }
         for (let i = 0; i < data.results.length; i++) {
-            if (data.results[i].name.toLowerCase().includes(searchInput.value.toLowerCase())) {
+            if (data.results[i].name.toLowerCase().startsWith(searchInput.value.toLowerCase())) {
                 names.push(data.results[i].name);
-                names.forEach(name => {
-                    const searchListItem = document.createElement("li");
-                    const anchor = document.createElement("a");
-                    anchor.href = `pokemonInfo.html?pokemon=${name}`;
-                    anchor.target = "_blank";
-                    anchor.textContent = name;
-                    searchListItem.appendChild(anchor);
-                    dropdown.appendChild(searchListItem);
-                });
+                const searchListItem = document.createElement("li");
+                const anchor = document.createElement("a");
+                anchor.href = `pokemonInfo.html?pokemon=${data.results[i].name}`;
+                anchor.target = "_blank";
+                anchor.textContent = data.results[i].name;
+                searchListItem.appendChild(anchor);
+                dropdown.appendChild(searchListItem);
             }
         }
         console.log(names);

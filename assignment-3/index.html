@@ -14,17 +14,16 @@
 	    <h1>Pokemon</h1>
     </header>
     <main>
-        <form>
+        <div id="fakeForm">
             <label for="search">Search Pokemon</label>
             <div>
-                <input type="text" id="search" class="search" required>
+                <input type="text" id="search" class="search" autocomplete="off">
                 <div>
-                    <ul id="dropdown">
+                    <ul id="dropdown" hidden>
                     </ul>
                 </div>
             </div>
-            <button type="button" id="searchBtn">Search</button>
-        </form>
+        </div>
         <section id="pokemonList">
             <!--
             the plan:
