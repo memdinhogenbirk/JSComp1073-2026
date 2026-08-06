@@ -1,3 +1,4 @@
+//https://pokeapi.co/docs/v2#pokemon-section
 const dynamicInfo = document.getElementById("dynamicInfo");
 dynamicInfo.textContent = "Name: Michael Emdin-Hogenbirk | Student ID: 200340292";
 const baseUrl = "https://pokeapi.co/api/v2/pokemon?limit=12&offset=0";

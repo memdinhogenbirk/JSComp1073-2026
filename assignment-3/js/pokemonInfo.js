@@ -1,4 +1,9 @@
+dynamicInfo.textContent = "Name: Michael Emdin-Hogenbirk | Student ID: 200340292";
 const currentPokemon = window.location.href.split('?pokemon=')[1];
+const pokemonInfo = document.getElementById("pokemonInfo");
+const pokemonName = document.getElementById("pokemonName");
+
+//https://pokeapi.co/docs/v2#pokemon
 console.log(currentPokemon);
 //`https://pokeapi.co/api/v2/pokemon/${pokemon.url.split('/')[6]}`
 const url = `https://pokeapi.co/api/v2/pokemon/${currentPokemon}`;
@@ -21,22 +26,40 @@ fetch(url)
     });
 }
 function displayPokemon(pokemon) {
-    const pokemonInfo = document.getElementById("pokemonInfo");
-    const div = document.createElement("div");
-    const ul = document.createElement("ul");
+    pokemonName.textContent = pokemon.name.toUpperCase();
+    const divMoves = document.createElement("div");
+    divMoves.id = "divMoves";
+    const divInfo = document.createElement("div");
+    divInfo.id = "divInfo";
+
+
+    const ulMoves = document.createElement("ul");
+    const liHeight = document.createElement("li");
+    liHeight.textContent = `Height: ${pokemon.height}`;
+    const liWeight = document.createElement("li");
+    liWeight.textContent = `Weight: ${pokemon.weight}`;
+    const liAbilities = document.createElement("li");
+    liAbilities.textContent = `Abilities: ${pokemon.abilities.map(ability => ability.ability.name).join(', ')}`;
+
     const img = document.createElement("img");
 
     const moves = pokemon.moves;
     moves.forEach(move => {
         const li = document.createElement("li");
         li.textContent = move.move.name;
-        ul.appendChild(li);
+        ulMoves.appendChild(li);
     });
 
     img.src = pokemon.sprites.front_default;
-    div.appendChild(img);
-    div.appendChild(ul);
-    pokemonInfo.appendChild(div);
+    divInfo.appendChild(liHeight);
+    divInfo.appendChild(liWeight);
+    divInfo.appendChild(liAbilities);
+
+    pokemonInfo.appendChild(img);
+    divMoves.appendChild(ulMoves);
+    pokemonInfo.appendChild(divInfo);
+    pokemonInfo.appendChild(divMoves);
+    
 
 }
 /*id:35
