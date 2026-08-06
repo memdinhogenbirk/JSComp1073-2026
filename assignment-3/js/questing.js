@@ -1,13 +1,13 @@
 const dynamicInfo = document.getElementById("dynamicInfo");
 
 const nakedUrl = "https://apps.runescape.com/runemetrics/quests?user=";
-const search = document.getElementById("search").value;
+const searchInput = document.getElementById("search");
 const searchBtn = document.getElementById("searchBtn");
 
 searchBtn.addEventListener("click", (event) => {
     event.preventDefault();
-    const search = document.getElementById("search").value;
-    const urlToSearch = nakedUrl + search; 
+    const urlToSearch = nakedUrl + searchInput.value;
+    console.log(urlToSearch); 
     fetchResults(urlToSearch);
 });
 
