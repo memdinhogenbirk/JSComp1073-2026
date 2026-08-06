@@ -5,15 +5,17 @@ const baseUrl = "https://pokeapi.co/api/v2/pokemon?limit=12&offset=0";
 const searchInput = document.getElementById("search");
 const searchBtn = document.getElementById("searchBtn");
 const pokemonList = document.getElementById("pokemonList");
+const names = [];
+const dropdown = document.getElementById("dropdown");
 
 let currentPage = 1;
 let totalPages = 1;
 
+
 searchBtn.addEventListener("click", (event) => {
     event.preventDefault();
-    const urlToSearch = baseUrl;
-    console.log(urlToSearch); 
-    //fetchResults(urlToSearch);
+    searchPokemonNames();
+    //searchPokemonByName(pokemonNames, searchInput.value.toLowerCase());
 });
 
 fetchResults(baseUrl);
@@ -159,4 +161,31 @@ function goToPage(page) {
     const url = `https://pokeapi.co/api/v2/pokemon?limit=12&offset=${offset}`;
     console.log(url);
     fetchResults(url);
+}
+function searchPokemonNames() {
+    names.length = 0; // Clear the names array before searching
+    dropdown.innerHTML = ""; // Clear the dropdown
+    fetch("https://pokeapi.co/api/v2/pokemon?limit=2000&offset=0")
+    .then(response => response.json())
+    .then(data => {
+        for (let i = 0; i < data.results.length; i++) {
+            if (data.results[i].name.toLowerCase().includes(searchInput.value.toLowerCase())) {
+                names.push(data.results[i].name);
+                names.forEach(name => {
+                    const searchListItem = document.createElement("li");
+                    const anchor = document.createElement("a");
+                    anchor.href = `pokemonInfo.html?pokemon=${name}`;
+                    anchor.target = "_blank";
+                    anchor.textContent = name;
+                    searchListItem.appendChild(anchor);
+                    dropdown.appendChild(searchListItem);
+                });
+            }
+        }
+        console.log(names);
+        //searchPokemonByName(names, searchInput.value.toLowerCase());
+    })
+    .catch(error => {
+        console.error(error);
+    });
 }
