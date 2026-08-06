@@ -34,6 +34,7 @@ fetch(url)
         console.error(error);
     });
 }
+
 function displayPokemonList(pokemonArray) {
     pokemonList.innerHTML = "";
     pokemonArray.forEach(pokemon => {
@@ -52,6 +53,7 @@ function displayPokemonList(pokemonArray) {
         pokemonList.appendChild(div);
     });
 }
+
 function addPageIndexes(count) {
     totalPages = Math.ceil(count / 12);
     const existing = document.getElementById("pageIndex");
@@ -63,6 +65,7 @@ function addPageIndexes(count) {
     
     const pageIndexBack = document.createElement("a");
     pageIndexBack.textContent = "<";
+    pageIndexBack.href = "#";
     pageIndexBack.addEventListener("click", (e) => {
         e.preventDefault();
         if (currentPage > 1) {
@@ -72,6 +75,7 @@ function addPageIndexes(count) {
 
     const pageIndexFwd = document.createElement("a");
     pageIndexFwd.textContent = ">";
+    pageIndexFwd.href = "#";
     pageIndexFwd.addEventListener("click", (e) => {
         e.preventDefault();
         if (currentPage < totalPages) {
@@ -113,7 +117,7 @@ function addPageIndexes(count) {
             event.preventDefault();
             let urlToSearch = `https://pokeapi.co/api/v2/pokemon?limit=12&offset=${(i - 1) * 12}`;
             console.log(urlToSearch);
-            fetchResults(urlToSearch);
+            goToPage(i);
         });
         pageIndex.appendChild(pageNum);
     }
@@ -137,8 +141,8 @@ function addPageIndexes(count) {
         let specificPage = prompt("Enter a page number between 1 and " + totalPages);
         if (specificPage >= 1 && specificPage <= totalPages) {
             let urlToSearch = `https://pokeapi.co/api/v2/pokemon?limit=12&offset=${(specificPage - 1) * 12}`;
-            console.log(urlToSearch);
-            fetchResults(urlToSearch);
+            //console.log(urlToSearch);
+            goToPage(Number(specificPage));
         }
     });
 }
