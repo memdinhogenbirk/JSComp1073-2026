@@ -11,7 +11,7 @@
 
 <body>
     <header>
-	    <h1>RuneScape Quest Info</h1>
+	    <h1>Pokemon</h1>
     </header>
     <main>
         <form>
@@ -19,7 +19,15 @@
             <input type="text" id="search" class="search" required>
             <button type="button" id="searchBtn">Search</button>
         </form>
-
+        <table>
+            <!--
+            the plan:
+            - page defaults to rows and columns of all the pokemon, limiting which ones are visible to a certain number (e.g. 10 at a time)
+            - each pokemon is displayed in a box which will contain the pokemon's sprite, name, and number
+            - clicking on a pokemon's box will bring user to a new page for that pokemon specifically (or maybe just replace the current page) with extended info
+            - search feature will allow user to search for a specific pokemon
+            -->
+        </table>
     </main>
     <footer>
         <p id="dynamicInfo"></p>

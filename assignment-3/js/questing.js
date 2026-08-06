@@ -1,4 +1,5 @@
 const dynamicInfo = document.getElementById("dynamicInfo");
+dynamicInfo.textContent = "Name: Michael Emdin-Hogenbirk | Student ID: 200340292";
 const baseUrl = "https://pokeapi.co/api/v2/pokemon?limit=10&offset=0";
 //const searchInput = document.getElementById("search");
 const searchBtn = document.getElementById("searchBtn");
