@@ -1,0 +1,22 @@
+form{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin: auto 20px auto 20px;
+}
+#pokemonList{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#pokemonList div{
+    border: 1px solid black;
+    margin: 5px;
+    padding: 5px;
+    width: 30%;
+    text-align: center;
+}
+#pokemonList img{
+    width: 200px;
+    height: 200px;
+}
