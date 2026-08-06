@@ -15,13 +15,13 @@ searchInput.addEventListener("input", (event) => {
     event.preventDefault();
     searchPokemonNames();
     dropdown.removeAttribute("hidden");
-});
-document.addEventListener("click", (event) => {
-  // Hide the dropdown if the click is outside both the dropdown and the search button
+    document.addEventListener("click", (event) => {
     if (!dropdown.contains(event.target) && event.target !== searchInput) {
         dropdown.setAttribute("hidden", "");
     }
-})
+}, { once: true });
+});
+
 
 
 fetchResults(baseUrl);
@@ -144,10 +144,25 @@ function addPageIndexes(count) {
     let lastPageNum = document.createElement("a");
     lastPageNum.textContent = totalPages;
     lastPageNum.href = "#";
+    lastPageNum.addEventListener("click", (event) => {
+        event.preventDefault();
+        let urlToSearch = `https://pokeapi.co/api/v2/pokemon?limit=12&offset=${(totalPages - 1) * 12}`;
+        console.log(urlToSearch);
+        goToPage(totalPages);
+    });
+    
     pageIndex.prepend(pageIndexBack);
     pageIndex.appendChild(specificPageNum);
     pageIndex.appendChild(lastPageNum);
     pageIndex.appendChild(pageIndexFwd);
+    if(currentPage === totalPages){
+        pageIndexFwd.classList.add("disabled");
+        lastPageNum.classList.add("disabled");
+    }
+    else{
+        pageIndexFwd.classList.remove("disabled");
+        lastPageNum.classList.remove("disabled");
+    }
     pokemonList.appendChild(pageIndex);
 
 
@@ -165,7 +180,7 @@ function goToPage(page) {
     currentPage = page;
     const offset = (page - 1) * 12;
     const url = `https://pokeapi.co/api/v2/pokemon?limit=12&offset=${offset}`;
-    console.log(url);
+    //console.log(url);
     fetchResults(url);
 }
 function searchPokemonNames() {

@@ -38,3 +38,7 @@
     overflow-y: auto;
     overflow-x: hidden;
 }
+.disabled{
+    pointer-events: none;
+    opacity: 0;
+}
