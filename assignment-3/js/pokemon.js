@@ -5,6 +5,9 @@ const searchInput = document.getElementById("search");
 const searchBtn = document.getElementById("searchBtn");
 const pokemonList = document.getElementById("pokemonList");
 
+let currentPage = 1;
+let totalPages = 1;
+
 searchBtn.addEventListener("click", (event) => {
     event.preventDefault();
     const urlToSearch = baseUrl;
@@ -50,18 +53,62 @@ function displayPokemonList(pokemonArray) {
     });
 }
 function addPageIndexes(count) {
-    const pageIndex = document.createElement("span");
-    const pageIndexFwd = document.createElement("a");
-    const pageIndexBack = document.createElement("a");
+    totalPages = Math.ceil(count / 12);
+    const existing = document.getElementById("pageIndex");
+    if (existing) {existing.remove();}
 
-    pageIndexFwd.textContent = ">";
+    const pageIndex = document.createElement("span");
+    pageIndex.id = "pageIndex";
+
+    
+    const pageIndexBack = document.createElement("a");
     pageIndexBack.textContent = "<";
+    pageIndexBack.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (currentPage > 1) {
+            goToPage(currentPage - 1);
+        }
+    });
+
+    const pageIndexFwd = document.createElement("a");
+    pageIndexFwd.textContent = ">";
+    pageIndexFwd.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (currentPage < totalPages) {
+            goToPage(currentPage + 1);
+        }
+    });
+    
+
+    let start = Math.max(1, currentPage - 2);
+    let end = Math.min(totalPages, start + 4);
+
+    if (end - start < 4) {
+        start = Math.max(1, end - 4);
+    }
+    if (start > 1) {
+        const dots = document.createElement("a");
+        dots.textContent = "... | ";
+        dots.href = "#";
+        dots.addEventListener("click", (e) => {
+            e.preventDefault();
+            const specificPage = prompt(`Enter a page number between 1 and ${totalPages}`);
+            if (specificPage >= 1 && specificPage <= totalPages) {
+                goToPage(Number(specificPage));
+            }
+        });
+        pageIndex.appendChild(dots);
+    }
+
     pageIndex.innerHTML = "";
-    let pageCountNum = Math.ceil(count / 12);
-    for (let i = 1; i <= 5; i++) {
+    for (let i = start; i <= end; i++) {
         let pageNum = document.createElement("a");
         pageNum.textContent = i +" | ";
         pageNum.href = "#";
+        if (i === currentPage) {
+            pageNum.style.fontWeight = "bold";
+            pageNum.style.textDecoration = "underline";
+        }
         pageNum.addEventListener("click", (event) => {
             event.preventDefault();
             let urlToSearch = `https://pokeapi.co/api/v2/pokemon?limit=12&offset=${(i - 1) * 12}`;
@@ -76,7 +123,7 @@ function addPageIndexes(count) {
 
 
     let lastPageNum = document.createElement("a");
-    lastPageNum.textContent = pageCountNum;
+    lastPageNum.textContent = totalPages;
     lastPageNum.href = "#";
     pageIndex.prepend(pageIndexBack);
     pageIndex.appendChild(specificPageNum);
@@ -87,11 +134,18 @@ function addPageIndexes(count) {
 
     specificPageNum.addEventListener("click", (event) => {
         event.preventDefault();
-        let specificPage = prompt("Enter a page number between 1 and " + pageCountNum);
-        if (specificPage >= 1 && specificPage <= pageCountNum) {
+        let specificPage = prompt("Enter a page number between 1 and " + totalPages);
+        if (specificPage >= 1 && specificPage <= totalPages) {
             let urlToSearch = `https://pokeapi.co/api/v2/pokemon?limit=12&offset=${(specificPage - 1) * 12}`;
             console.log(urlToSearch);
             fetchResults(urlToSearch);
         }
     });
+}
+function goToPage(page) {
+    currentPage = page;
+    const offset = (page - 1) * 12;
+    const url = `https://pokeapi.co/api/v2/pokemon?limit=12&offset=${offset}`;
+    console.log(url);
+    fetchResults(url);
 }
