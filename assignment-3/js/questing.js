@@ -1,12 +1,11 @@
 const dynamicInfo = document.getElementById("dynamicInfo");
-
-const nakedUrl = "https://apps.runescape.com/runemetrics/quests?user=";
-const searchInput = document.getElementById("search");
+const baseUrl = "https://pokeapi.co/api/v2/pokemon?limit=10&offset=0";
+//const searchInput = document.getElementById("search");
 const searchBtn = document.getElementById("searchBtn");
 
 searchBtn.addEventListener("click", (event) => {
     event.preventDefault();
-    const urlToSearch = nakedUrl + searchInput.value;
+    const urlToSearch = baseUrl;
     console.log(urlToSearch); 
     fetchResults(urlToSearch);
 });
