@@ -40,9 +40,10 @@ function displayPokemonList(pokemonArray) {
     pokemonArray.forEach(pokemon => {
         const anchor = document.createElement("a");
         anchor.classList.add("pokemonAnchor");
-        anchor.href = `https://pokeapi.co/api/v2/pokemon/${pokemon.url.split('/')[6]}`;
-        anchor.target = "_blank";
-        pokemonList.appendChild(anchor);
+        //`https://pokeapi.co/api/v2/pokemon/${pokemon.url.split('/')[6]}`
+        anchor.href = `pokemonInfo.html?pokemon=${pokemon.url.split('/')[6]}`;
+        anchor.target = "_blank";//open in new tab
+
         const div = document.createElement("div");
         const p = document.createElement("p");
         //console.log(pokemon.url.split('/')); //viewing the array to determine the index of the pokemon id (index 6)
